@@ -6,29 +6,40 @@ public class InteractableObjects : MonoBehaviour
 {
 
     public int timeCut, timeSmashed;
+    private Rigidbody _rigidbody;
+    private Collider _collider;
     public PlayerController player;
 
     [field:SerializeField] public LayerMask Layers { get; private set; }
 
-    // Start is called before the first frame update
-    void Start()
+    internal virtual void Start()
     {
-        
+        _rigidbody = GetComponent<Rigidbody>();
+        _collider = GetComponent<Collider>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void OnPickup(PlayerController playerCon)
+    public virtual void OnPickup(PlayerController playerCon)
     {
         player = playerCon;
     }
 
-    public void OnRealease()
+    public virtual void OnRelease()
     {
         player = null;
+    }
+
+    internal virtual void OnCollisionEnter(Collision other)
+    {
+        if(player == null)
+            return;
+
+        if(other.collider.TryGetComponent(out PlateController plate))
+        {
+            plate.addToPlate(transform);
+            _rigidbody.isKinematic = true;
+            _collider.enabled = false;
+            player.loseObject();
+            return;
+        }
     }
 }

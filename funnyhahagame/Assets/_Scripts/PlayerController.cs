@@ -157,8 +157,10 @@ public class PlayerController : MonoBehaviour
         return closestCollider ? closestCollider.gameObject : null;
     }
 
-    private void pickupObject() {
-        if (_inputs.grabbing && grabbed_object == null)
+    public void loseObject() => pickupObject(true);
+
+    private void pickupObject(bool lostObject = false) {
+        if (_inputs.grabbing && grabbed_object == null && !lostObject)
         {
             grabbed_object = FindClosestObjectWithinRadius(HandBone.transform.position, .4f);
 
@@ -184,11 +186,14 @@ public class PlayerController : MonoBehaviour
             else
                 Debug.Log("No object found within range");
         }
-        else if (!_inputs.grabbing && grabbed_object != null) {
-            grabbed_object.transform.parent = null;
-            grabbed_object.layer = 0;
-            grabbed_object.GetComponent<Rigidbody>().isKinematic = false;
-            grabbed_object.GetComponent<InteractableObjects>().OnRealease();
+        else if (!_inputs.grabbing && grabbed_object != null || lostObject) {
+            if(!lostObject)
+            {
+                grabbed_object.transform.parent = null;
+                grabbed_object.GetComponent<Rigidbody>().isKinematic = false;
+                grabbed_object.layer = 0;
+            }
+            grabbed_object.GetComponent<InteractableObjects>().OnRelease();
             grabbed_object = null;
         }
     }

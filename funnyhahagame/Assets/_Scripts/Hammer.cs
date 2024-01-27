@@ -8,14 +8,6 @@ public class Hammer : InteractableObjects
     [SerializeField]
     private bool hasbeenBeat;
 
-
-
-    void Start()
-    {
-
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -26,11 +18,8 @@ public class Hammer : InteractableObjects
             {
                 hasbeenBeat = false;
                 hitTimer = 0;
-
             }
         }
-
-
     }
 
     public void Smash(InteractableObjects target)
@@ -59,7 +48,7 @@ public class Hammer : InteractableObjects
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    internal override void OnCollisionEnter(Collision collision)
     {
 
         if (player == null)

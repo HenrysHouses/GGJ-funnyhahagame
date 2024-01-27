@@ -7,21 +7,10 @@ public class Knife : InteractableObjects
     public float cutTimer, cutTimerReset = 1;
     [SerializeField]
     private bool hasCut;
-    
-    
-   
-  
-    void Start()
-    {
-       
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-
-        
        if(hasCut)
         {
             cutTimer += Time.deltaTime;
@@ -29,19 +18,14 @@ public class Knife : InteractableObjects
             {
                 hasCut = false;
                 cutTimer = 0;
-
             }
         }
-        
-
     }
 
     public void Cut(InteractableObjects target)
     {
-
         if (target.timeCut > 3)
         {
-
             //Change game objct to shrimp not desroy if time lel
             Destroy(target.gameObject);
             return;
@@ -65,20 +49,16 @@ public class Knife : InteractableObjects
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    internal override void OnCollisionEnter(Collision collision)
     {
-
         if (player == null)
             return;
 
-        InteractableObjects objectstointeract = collision.gameObject.GetComponent<InteractableObjects>();
-        if (objectstointeract)
+        InteractableObjects objectInteraction = collision.gameObject.GetComponent<InteractableObjects>();
+        if (objectInteraction)
         {
             if(player.HandTarget.velocity.magnitude > 2.2f)
-             Cut(objectstointeract);
+             Cut(objectInteraction);
         }
     }
-    
-
-
 }

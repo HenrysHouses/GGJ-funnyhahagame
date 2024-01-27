@@ -9,13 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4027318915232914719}
+  - component: {fileID: 3130616336807213699}
   - component: {fileID: 21447771704021690}
   - component: {fileID: 2857751579219764848}
   - component: {fileID: 7835530784724387662}
   - component: {fileID: 6379139146939079448}
   m_Layer: 0
-  m_Name: dinnerplate
-  m_TagString: Untagged
+  m_Name: PlateController
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,14 +28,32 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4370806778948683685}
-  m_LocalRotation: {x: -0.70502776, y: 0.054185558, z: -0.05418556, w: 0.70502746}
+  m_LocalRotation: {x: -0.7050275, y: 0.054186795, z: -0.054186795, w: 0.7050275}
   m_LocalPosition: {x: -1.36, y: 0.097, z: -1.315}
-  m_LocalScale: {x: 35.4, y: 35.4, z: 2.3341455}
+  m_LocalScale: {x: 35.4, y: 35.4, z: 2.3341458}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 638.79, y: 90, z: -90}
+--- !u!114 &3130616336807213699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370806778948683685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3dfdc55b47d48b48b802a60c311f07c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeCut: 0
+  timeSmashed: 0
+  player: {fileID: 0}
+  <Layers>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!33 &21447771704021690
 MeshFilter:
   m_ObjectHideFlags: 0
