@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1468414128025617206}
   m_Layer: 0
   m_Name: fish
-  m_TagString: Untagged
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,9 +30,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774896605915204486}
-  m_LocalRotation: {x: -0.667009, y: 0.7417586, z: 0.05201523, w: 0.04677347}
+  m_LocalRotation: {x: -0.6670059, y: 0.7417609, z: 0.052018598, w: 0.046776142}
   m_LocalPosition: {x: -0.971, y: 2.336, z: 1.571}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalScale: {x: 40, y: 63.2, z: 40}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -115,7 +115,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f9fa5ffca8b84df4d8724ffff45790b2, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -226,6 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5202c8773edd4464cb1526797ea5d27a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Layers>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 193
 --- !u!64 &1468414128025617206
 MeshCollider:
   m_ObjectHideFlags: 0
