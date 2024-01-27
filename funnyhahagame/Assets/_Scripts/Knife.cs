@@ -7,6 +7,7 @@ public class Knife : InteractableObjects
     public float cutTimer, cutTimerReset = 1;
     [SerializeField]
     private bool hasCut;
+    public GameObject SpashVFX;
 
     // Update is called once per frame
     void Update()
@@ -33,6 +34,7 @@ public class Knife : InteractableObjects
 
         if(!hasCut && (target.Layers & (1 << 6)) !=0 )
         {
+            Destroy(Instantiate(SpashVFX, target.transform.position, Quaternion.identity), 3);
 
             gameObject.GetComponent<AudioSource>().Play();
             GameObject instance0 = Instantiate(target.gameObject, target.transform.position, Quaternion.identity);

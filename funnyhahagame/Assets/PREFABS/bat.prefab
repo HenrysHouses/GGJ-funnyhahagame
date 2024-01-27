@@ -140,6 +140,8 @@ MonoBehaviour:
   hitTimer: 0
   hitTimerReset: 1
   hasBeenBeat: 0
+  SpashVFX: {fileID: 7575538337374612610, guid: 3fe8379d20e6f354fa54cb5acd4b8f6a,
+    type: 3}
 --- !u!82 &4023990942413507720
 AudioSource:
   m_ObjectHideFlags: 0

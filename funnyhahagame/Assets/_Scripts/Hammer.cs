@@ -7,6 +7,7 @@ public class Hammer : InteractableObjects
     public float hitTimer, hitTimerReset = 1;
     [SerializeField]
     private bool hasBeenBeat;
+    public GameObject SpashVFX;
 
     // Update is called once per frame
     void Update()
@@ -26,29 +27,20 @@ public class Hammer : InteractableObjects
     {
         if (!hasBeenBeat && (target.Layers & (1 << 7)) != 0)
         {
-            if(target.transform.rotation == Quaternion.identity)
-            {
+            
+                Destroy(Instantiate(SpashVFX, target.transform.position, Quaternion.identity), 3);
                 gameObject.GetComponent<AudioSource>().Play();
                 target.transform.localScale = new Vector3(target.transform.localScale.x * 1.4f, target.transform.localScale.y * 0.6f, target.transform.localScale.z * 1.4f);
                 hasBeenBeat = true;
+                //Debug.Log("Smash!!");
 
-            }
-            else if(target.transform.rotation == Quaternion.FromToRotation(Vector3.zero,Vector3.right))
-            {
-                gameObject.GetComponent<AudioSource>().Play();
-                target.transform.localScale = new Vector3(target.transform.localScale.x * 1.4f, target.transform.localScale.y * 1.4f, target.transform.localScale.z * 0.6f);
-                hasBeenBeat = true;
-
-            }
-            
-            IngredientObject _ingredientObject = target as IngredientObject;
+                IngredientObject _ingredientObject = target as IngredientObject;
 
             if(_ingredientObject != null)
             {
                 _ingredientObject.ingredient.timesSmashed++;
             }
 
-            Debug.Log("Smash!!");
         }
 
     }
@@ -61,8 +53,11 @@ public class Hammer : InteractableObjects
         InteractableObjects interactionObject = collision.gameObject.GetComponent<InteractableObjects>();
         if (interactionObject)
         {
-            if (player.HandTarget.velocity.magnitude > 2.2f)
+            if (player.HandTarget.velocity.magnitude > 1)
+            {
                 Smash(interactionObject);
+              //  Debug.Log("Smash0");
+            }
         }
     }
 }

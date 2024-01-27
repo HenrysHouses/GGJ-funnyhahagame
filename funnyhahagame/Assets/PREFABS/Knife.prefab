@@ -131,9 +131,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28d8f74285645894c875c2389dbd37a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeCut: 0
+  timeSmashed: 0
+  burnedTimer: 0
+  player: {fileID: 0}
+  <Layers>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 0
   cutTimer: 0
   cutTimerReset: 1
   hasCut: 0
+  SpashVFX: {fileID: 7575538337374612610, guid: 3fe8379d20e6f354fa54cb5acd4b8f6a,
+    type: 3}
 --- !u!54 &4055158448317860827
 Rigidbody:
   m_ObjectHideFlags: 0
