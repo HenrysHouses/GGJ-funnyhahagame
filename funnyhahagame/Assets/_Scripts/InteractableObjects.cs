@@ -5,6 +5,8 @@ using UnityEngine;
 public class InteractableObjects : MonoBehaviour
 {
 
+    public int timeCut, timeSmashed;
+
     [field:SerializeField] public LayerMask Layers { get; private set; }
 
     // Start is called before the first frame update

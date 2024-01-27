@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 753178016184272898}
   - component: {fileID: 3285134188639747272}
   - component: {fileID: 5604265342323595922}
+  - component: {fileID: 2133397049057144779}
   m_Layer: 0
   m_Name: bottombun2
   m_TagString: Untagged
@@ -98,3 +99,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4894959852405813305, guid: d45ba23e790c3944b81f8f1ddbde729a, type: 3}
+--- !u!114 &2133397049057144779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3933850653074611485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5202c8773edd4464cb1526797ea5d27a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeCut: 0
+  timeSmashed: 0
+  <Layers>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 129
