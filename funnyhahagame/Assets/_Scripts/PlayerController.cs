@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask RaycastMask;
     [SerializeField] LayerMask IgnoreMask;
     [SerializeField] LayerMask GrabbableObjectMask;
+
+    [SerializeField] private Transform LeftLimit;
+    [SerializeField] private Transform RightLimit;
+
     playerInput _inputs;
     InputSettings _inputSettings;
     GameObject grabbed_object;
@@ -75,6 +79,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         handleInputs();
+        moveCamera();
         pickupObject();
 
     }
@@ -137,6 +142,38 @@ public class PlayerController : MonoBehaviour
         StretchBone.transform.localPosition =  targetStretchLength;
     }
 
+    private void moveCamera()
+    {
+        Vector3 mousePosition = _inputs.MousePosition;
+
+        // Calculate the amount to move the GameObject
+        float moveAmount = 0;
+        if (mousePosition.x < Screen.width * 0.25f)
+        {
+            // Move to the left
+            moveAmount = (mousePosition.x - Screen.width * 0.25f);
+        }
+        else if (mousePosition.x > Screen.width * 0.75f)
+        {
+            // Move to the right
+            moveAmount = (mousePosition.x - Screen.width * 0.75f);
+        }
+
+        // Adjust the GameObject's position
+        if (Mathf.Abs(moveAmount) > 0)
+        {
+            var new_z = transform.position.z + moveAmount / 1000;
+
+            if (new_z < LeftLimit.position.z)
+                new_z = LeftLimit.position.z;
+            else if (new_z > RightLimit.position.z)
+                new_z = RightLimit.position.z;
+
+            transform.position = new Vector3(transform.position.x, transform.position.y, new_z);
+        }
+
+    }
+
     GameObject FindClosestObjectWithinRadius(Vector3 center, float radius)
     {
         Collider[] colliders = Physics.OverlapSphere(center, radius);
@@ -169,6 +206,15 @@ public class PlayerController : MonoBehaviour
                 Debug.DrawLine(HandBone.position, grabbed_object.transform.position, Color.magenta, 0.2f);
                 Debug.Log("Picked up an object");
 
+                grabbed_object.transform.position = HandBone.position;
+                Transform child = grabbed_object.transform.Find("GrabPos");
+                if (child)
+                {
+                    grabbed_object.transform.position = HandBone.position + (grabbed_object.transform.position - child.position);
+                }
+
+                // If the child exists, return its position
+                
                 grabbed_object.transform.SetParent(HandBone);
                 grabbed_object.GetComponent<Rigidbody>().isKinematic = true;
                 grabbed_object.layer = 2;
