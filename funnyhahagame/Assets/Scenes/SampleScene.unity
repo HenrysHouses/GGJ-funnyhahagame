@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 782278741}
   - component: {fileID: 782278740}
   - component: {fileID: 782278739}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,6 +505,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 4.69
       objectReference: {fileID: 0}
+    - target: {fileID: -5246283994927697806, guid: c94b309adb163c149a79f754fb3686ad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4966935809948565375, guid: c94b309adb163c149a79f754fb3686ad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c94b309adb163c149a79f754fb3686ad,
         type: 3}
       propertyPath: m_Name
@@ -584,19 +594,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!65 &1076415790
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 673271350}
-  m_Material: {fileID: 13400000, guid: 0b42d2a0a4fe88441b1f68e12ef4b803, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.003, y: 0.003, z: 0.003}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!54 &1076415791
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -747,3 +745,9 @@ MonoBehaviour:
   RaycastMask:
     serializedVersion: 2
     m_Bits: 1
+  IgnoreMask:
+    serializedVersion: 2
+    m_Bits: 0
+  GrabbableObjectMask:
+    serializedVersion: 2
+    m_Bits: 0

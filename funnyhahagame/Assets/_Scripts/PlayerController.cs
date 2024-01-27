@@ -11,9 +11,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float handOffset = 1;
     Camera playerCam;
     [SerializeField] LayerMask RaycastMask;
+    [SerializeField] LayerMask IgnoreMask;
+    [SerializeField] LayerMask GrabbableObjectMask;
     playerInput _inputs;
     InputSettings _inputSettings;
-
+    GameObject grabbed_object;
 
     struct playerInput
     {
@@ -65,6 +67,8 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         handleInputs();
+        pickupObject();
+
     }
 
     private void setInputs()
@@ -92,28 +96,58 @@ public class PlayerController : MonoBehaviour
         Debug.DrawLine(_inputs.targetPosition, HandTarget.transform.position, Color.red, 0.1f);
         Debug.DrawLine(HandBone.position, HandTarget.transform.position, Color.green, 0.1f);
 
-        float dist = Vector3.Distance(_inputs.targetPosition, HandTarget.transform.position);
-
-        if(dist > 0)
-        {
-            
-        }
-
-        HandTarget.AddForce(direction * handForce.Evaluate(dist));
-
-        float distanceThreshold = 1f;
-
-        if(dist < distanceThreshold)
-        {
-            Vector3 desiredVelocity = HandTarget.velocity;
-            // HandTarget.AddForce(direction * handForce);
-
-            desiredVelocity = desiredVelocity * (0.1f * Mathf.Pow(desiredVelocity.magnitude, -2) - 0.1f);
-            
-            Debug.DrawLine(HandTarget.transform.position, HandTarget.transform.InverseTransformDirection(desiredVelocity) *3, Color.cyan);
-            Debug.Log(desiredVelocity);
-            // HandTarget.velocity = desiredVelocity;
-        }
+        HandTarget.transform.position = _inputs.targetPosition;
     }
 
+    GameObject FindClosestObjectWithinRadius(Vector3 center, float radius)
+    {
+        Collider[] colliders = Physics.OverlapSphere(center, radius);
+
+        Collider closestCollider = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (var collider in colliders)
+        {
+            if (!collider.gameObject.CompareTag("Grabbable")) continue;
+
+            float distance = Vector3.Distance(center, collider.bounds.center);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestCollider = collider;
+            }
+        }
+
+        return closestCollider ? closestCollider.gameObject : null;
+    }
+
+    private void pickupObject() {
+        if (_inputs.grabbing && grabbed_object == null)
+        {
+
+            grabbed_object = FindClosestObjectWithinRadius(HandBone.transform.position, .4f);
+
+            if (grabbed_object != null)
+            {
+                Debug.DrawLine(HandBone.position, grabbed_object.transform.position, Color.magenta, 0.2f);
+                Debug.Log("Picked up an object");
+
+                grabbed_object.transform.SetParent(HandBone);
+                grabbed_object.GetComponent<Rigidbody>().isKinematic = true;
+                grabbed_object.layer = 2;
+            }
+            else
+                Debug.Log("No object found within range");
+
+
+        }
+        else if (!_inputs.grabbing && grabbed_object != null) {
+            grabbed_object.transform.parent = null;
+            grabbed_object.layer = 0;
+            grabbed_object.GetComponent<Rigidbody>().isKinematic = false;
+            grabbed_object = null;
+        }
+
+        
+    }
 }
