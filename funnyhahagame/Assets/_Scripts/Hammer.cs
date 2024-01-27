@@ -40,14 +40,14 @@ public class Hammer : InteractableObjects
             if(target.transform.rotation == Quaternion.identity)
             {
                 gameObject.GetComponent<AudioSource>().Play();
-                target.transform.localScale = new Vector3(target.transform.localScale.x * 1.2f, target.transform.localScale.y * 0.8f, target.transform.localScale.z * 1.2f);
+                target.transform.localScale = new Vector3(target.transform.localScale.x * 1.4f, target.transform.localScale.y * 0.6f, target.transform.localScale.z * 1.4f);
                 hasbeenBeat = true;
 
             }
             else if(target.transform.rotation == Quaternion.FromToRotation(Vector3.zero,Vector3.right))
             {
                 gameObject.GetComponent<AudioSource>().Play();
-                target.transform.localScale = new Vector3(target.transform.localScale.x * 1.2f, target.transform.localScale.y * 1.2f, target.transform.localScale.z * 0.8f);
+                target.transform.localScale = new Vector3(target.transform.localScale.x * 1.4f, target.transform.localScale.y * 1.4f, target.transform.localScale.z * 0.6f);
                 hasbeenBeat = true;
 
             }
@@ -64,10 +64,10 @@ public class Hammer : InteractableObjects
 
         if (player == null)
             return;
+      
+        
+        
         InteractableObjects objectstointeract = collision.gameObject.GetComponent<InteractableObjects>();
-   
-
-
         if (objectstointeract)
         {
             if (player.HandTarget.velocity.magnitude > 2.2f)
