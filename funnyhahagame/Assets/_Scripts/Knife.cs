@@ -35,7 +35,7 @@ public class Knife : MonoBehaviour
 
     public void Cut(InteractableObjects target)
     {
-        if(!hasCut)
+        if(!hasCut && (target.Layers & (1 << 3)) !=0 )
         {
             gameObject.GetComponent<AudioSource>().Play();
             GameObject instance0 = Instantiate(target.gameObject, target.transform.position, Quaternion.identity);

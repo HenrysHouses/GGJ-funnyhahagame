@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InteractableObjects : MonoBehaviour
 {
+
+    [field:SerializeField] public LayerMask Layers { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
