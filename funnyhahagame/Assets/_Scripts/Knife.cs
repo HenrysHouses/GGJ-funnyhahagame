@@ -54,7 +54,7 @@ public class Knife : InteractableObjects
         if (player == null)
             return;
 
-        InteractableObjects objectInteraction = collision.gameObject.GetComponent<InteractableObjects>();
+        IngredientObject objectInteraction = collision.gameObject.GetComponent<IngredientObject>();
         if (objectInteraction)
         {
             if(player.HandTarget.velocity.magnitude > 2.2f)

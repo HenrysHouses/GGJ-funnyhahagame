@@ -25,7 +25,7 @@ public struct Ingredient
     public int Amount;
     public int timesCut;
     public int timesSmashed;
-    public int timesBurnt;
+    public float burnProgress;
 }
 
 [CreateAssetMenu(menuName = "funnyhahagame/Recipe")]

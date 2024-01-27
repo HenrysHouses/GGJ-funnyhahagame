@@ -77,7 +77,6 @@ public class PlayerController : MonoBehaviour
     {
         handleInputs();
         pickupObject();
-
     }
 
     private void setInputs()

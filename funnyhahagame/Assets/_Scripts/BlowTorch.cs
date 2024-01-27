@@ -4,83 +4,41 @@ using UnityEngine;
 
 public class BlowTorch : InteractableObjects
 {
-    public float BurnTimer, MaxBurnedtimer = 1;
+    // public float BurnTimer, MaxBurnedtimer = 1;
     [SerializeField]
     private bool hasBeenBurned;
     [SerializeField]
-    private Transform Shootpoint;
-
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
-        if (player == null)
-            return;
-
-    }
+    private Transform shootPoint;
+    [SerializeField] float burnStrength = 6;
 
     public override void OnPickup(PlayerController playerCon)
     {
         base.OnPickup(playerCon);
-
         StartCoroutine(Burn());
-           
-
-       
-
-        
-    }
-
-
-
-    public override void OnRelease()
-    {
-        base.OnRelease();
-        StopAllCoroutines();
     }
 
     public IEnumerator Burn()
     {
-
-        Ray ourRay = new Ray(Shootpoint.position, Shootpoint.forward);
+        Ray ourRay = new Ray(shootPoint.position, shootPoint.forward);
 
         RaycastHit[] hits = Physics.RaycastAll(ourRay, Mathf.Infinity, 1 << 0);
 
-        foreach (RaycastHit hit in hits)
+        while(player != null)
         {
-            if(hit.collider.TryGetComponent(out InteractableObjects component))
+            foreach (RaycastHit hit in hits)
             {
-               if((component.Layers & (1 << 7)) !=0 && hasBeenBurned)
+                if(hit.collider.TryGetComponent(out IngredientObject component))
                 {
+                    if((component.Layers & (1 << 7)) !=0 && hasBeenBurned)
+                    {
+                        component.ingredient.burnProgress += burnStrength * Time.deltaTime;
 
-
-
-
-                 //   component.GetComponent<Renderer>().material.color = 
-
-
+                        component.GetComponent<Renderer>().material.color = Color.Lerp(Color.white, Color.black, component.ingredient.burnProgress); 
+                    }
                 }
             }
-        }
 
-        if (burnedTimer > 10)
-        {
-          //  Destroy(target.gameObject);
-            yield break;
-        }
-
-        if (burnedTimer == burnedTimer)
-        {
-
-            //    target.GetComponent<Renderer>().material.color
             yield return new WaitForEndOfFrame();
         }
-
     }
-
-
 }
