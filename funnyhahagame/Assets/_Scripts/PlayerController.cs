@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform LeftLimit;
     [SerializeField] private Transform RightLimit;
+    [SerializeField] private AnimationCurve moveSpeed;
 
     playerInput _inputs;
     InputSettings _inputSettings;
@@ -150,19 +151,23 @@ public class PlayerController : MonoBehaviour
         float moveAmount = 0;
         if (mousePosition.x < Screen.width * 0.25f)
         {
+            Debug.Log("Scalar" + (Screen.width * 0.25f - mousePosition.x) / Screen.width * 0.25f);
             // Move to the left
-            moveAmount = (mousePosition.x - Screen.width * 0.25f);
+            moveAmount = - moveSpeed.Evaluate((Screen.width * 0.25f - mousePosition.x) / Screen.width * 0.25f);
+
+
         }
         else if (mousePosition.x > Screen.width * 0.75f)
         {
             // Move to the right
-            moveAmount = (mousePosition.x - Screen.width * 0.75f);
+            moveAmount = moveSpeed.Evaluate((mousePosition.x - Screen.width * 0.75f) / Screen.width * 0.25f);
+
         }
 
         // Adjust the GameObject's position
         if (Mathf.Abs(moveAmount) > 0)
         {
-            var new_z = transform.position.z + moveAmount / 1000;
+            var new_z = transform.position.z + moveAmount * 100;
 
             if (new_z < LeftLimit.position.z)
                 new_z = LeftLimit.position.z;
