@@ -279,7 +279,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 826510992537228839, guid: 6b577017fbb452243a1c6a3349928b24,
         type: 3}
-<<<<<<< Updated upstream
       propertyPath: stretchSpeed
       value: 0.0025
       objectReference: {fileID: 0}
@@ -288,7 +287,6 @@ PrefabInstance:
       propertyPath: stretchThreshold
       value: 0.025
       objectReference: {fileID: 0}
-=======
       propertyPath: LeftLimit
       value: 
       objectReference: {fileID: 1652692849}
@@ -297,6 +295,5 @@ PrefabInstance:
       propertyPath: RightLimit
       value: 
       objectReference: {fileID: 209345230}
->>>>>>> Stashed changes
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b577017fbb452243a1c6a3349928b24, type: 3}
