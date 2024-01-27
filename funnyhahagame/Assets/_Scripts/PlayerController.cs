@@ -172,6 +172,7 @@ public class PlayerController : MonoBehaviour
                 if (child)
                 {
                     grabbed_object.transform.position = HandBone.position + (grabbed_object.transform.position - child.position);
+                    grabbed_object.transform.rotation = child.rotation;
                 }
 
                 // If the child exists, return its position
