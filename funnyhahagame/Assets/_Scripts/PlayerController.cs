@@ -8,8 +8,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody HandTarget;
     [SerializeField] private Transform HandBone;
     [SerializeField] private Transform StretchBone;
-    [SerializeField] private float stretchSpeed;
-    private float stretchMin;
+    [SerializeField] private float stretchSpeed = 1;
+    [SerializeField] private float stretchThreshold = 0.01f;
+    private float stretchMinMagnitude;
+    Vector3 targetStretchLength;
     [SerializeField] private Transform _Start;
     [SerializeField] private AnimationCurve handForce;
     [SerializeField] private float handOffset = 1;
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
         HandTarget.transform.position = _Start.position;
 
-        stretchMin = StretchBone.localPosition.y;
+        stretchMinMagnitude = StretchBone.localPosition.magnitude;
     }
 
     // Update is called once per frame
@@ -113,27 +115,26 @@ public class PlayerController : MonoBehaviour
         Debug.DrawLine(HandTarget.transform.position, (HandTarget.transform.position +  damping) *3, Color.cyan);
 
         float armStretchLength = Vector3.Distance(HandTarget.transform.position, HandBone.position);
-        if(armStretchLength > 0.05678258f)
-        {
-            Vector3 StretchPos = StretchBone.transform.localPosition;
-            
-            Vector3 StretchDir = HandTarget.transform.position + HandBone.position;
+        targetStretchLength = StretchBone.transform.localPosition;
 
-            if(Vector3.Dot(StretchDir, HandBone.right) < 0)
-            {
-                StretchPos.y = Mathf.Clamp(StretchBone.transform.localPosition.y + 1 * stretchSpeed, stretchMin, 1000);
-                // Debug.Log("bigger");
-            }
-            else
-            {
-                StretchPos.y = Mathf.Clamp(StretchBone.transform.localPosition.y - 1 * stretchSpeed, stretchMin, 1000);
-                // Debug.Log("smaller");
-            }
+        Debug.Log(targetStretchLength);
 
+        Vector3 StretchDir = HandTarget.transform.position - HandBone.position;
+        Debug.DrawLine(HandBone.position, StretchDir, Color.magenta);
 
-            // StretchBone.transform.localPosition =  StretchPos;
-            Debug.Log("STREETCH");
-        }
+        Debug.Log(armStretchLength);
+        if((armStretchLength - 0.05678258f) < stretchThreshold && (armStretchLength - 0.05678258f) > -stretchThreshold)
+            return;
+
+        if(Vector3.Dot(HandBone.InverseTransformDirection(StretchDir), HandBone.right) < 0)
+            targetStretchLength.y = Mathf.Clamp(StretchBone.transform.localPosition.y + armStretchLength * stretchSpeed, stretchMinMagnitude, 3);
+        else
+            targetStretchLength.y = Mathf.Clamp(StretchBone.transform.localPosition.y - 1 * stretchSpeed, stretchMinMagnitude, 3);
+    }
+
+    void LateUpdate()
+    {
+        StretchBone.transform.localPosition =  targetStretchLength;
     }
 
     GameObject FindClosestObjectWithinRadius(Vector3 center, float radius)
@@ -161,7 +162,6 @@ public class PlayerController : MonoBehaviour
     private void pickupObject() {
         if (_inputs.grabbing && grabbed_object == null)
         {
-
             grabbed_object = FindClosestObjectWithinRadius(HandBone.transform.position, .4f);
 
             if (grabbed_object != null)
@@ -175,8 +175,6 @@ public class PlayerController : MonoBehaviour
             }
             else
                 Debug.Log("No object found within range");
-
-
         }
         else if (!_inputs.grabbing && grabbed_object != null) {
             grabbed_object.transform.parent = null;
@@ -184,7 +182,5 @@ public class PlayerController : MonoBehaviour
             grabbed_object.GetComponent<Rigidbody>().isKinematic = false;
             grabbed_object = null;
         }
-
-        
     }
 }

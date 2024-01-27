@@ -431,7 +431,8 @@ MonoBehaviour:
   HandTarget: {fileID: 826510992006386933}
   HandBone: {fileID: 3398660492723764975}
   StretchBone: {fileID: 4471314815584124606}
-  stretchSpeed: 1
+  stretchSpeed: 0.0025
+  stretchThreshold: 0.025
   _Start: {fileID: 826510991298621853}
   handForce:
     serializedVersion: 2
