@@ -14,23 +14,26 @@ public class Narrator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
+
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        switch (!light.lightsOn)
-        {
-            case: 
-               //what to do
-                break;
-        }
-
-
-        
-
-        timerForLights += Time.deltaTime;
-       // if(timerForLights > 10)
-    }
-}
+   // void Update()
+   // {
+   //     soundsToPlay[0].
+   //     switch (!light.lightsOn)
+   //     {
+   //         case: 
+   //           
+   //             break;
+   //     }
+   //
+   //
+   //     
+   //
+   //     timerForLights += Time.deltaTime;
+   //    // if(timerForLights > 10)
+   // }
+}  //
