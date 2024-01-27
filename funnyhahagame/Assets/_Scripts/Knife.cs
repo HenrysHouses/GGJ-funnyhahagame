@@ -37,6 +37,7 @@ public class Knife : MonoBehaviour
     {
         if(!hasCut)
         {
+            gameObject.GetComponent<AudioSource>().Play();
             GameObject instance0 = Instantiate(target.gameObject, target.transform.position, Quaternion.identity);
             instance0.transform.localScale = new Vector3(target.transform.localScale.x * 0.5f, target.transform.localScale.y * 0.5f, target.transform.localScale.z * 0.5f);
            GameObject instance1 = Instantiate(target.gameObject, target.transform.position, Quaternion.identity);
