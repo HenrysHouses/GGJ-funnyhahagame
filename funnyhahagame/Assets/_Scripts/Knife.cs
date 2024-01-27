@@ -39,7 +39,7 @@ public class Knife : InteractableObjects
     public void Cut(InteractableObjects target)
     {
 
-        if (target.timeCut > 4)
+        if (target.timeCut > 3)
         {
 
             //Change game objct to shrimp not desroy if time lel

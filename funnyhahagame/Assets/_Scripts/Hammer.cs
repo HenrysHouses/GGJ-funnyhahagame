@@ -37,9 +37,22 @@ public class Hammer : InteractableObjects
     {
         if (!hasbeenBeat && (target.Layers & (1 << 7)) != 0)
         {
-            gameObject.GetComponent<AudioSource>().Play();
-            target.transform.localScale = new Vector3(target.transform.localScale.x * 0.6f, target.transform.localScale.y * 1.2f, target.transform.localScale.z * 1.1f);
-            hasbeenBeat = true;
+            if(target.transform.rotation == Quaternion.identity)
+            {
+                gameObject.GetComponent<AudioSource>().Play();
+                target.transform.localScale = new Vector3(target.transform.localScale.x * 1.2f, target.transform.localScale.y * 0.8f, target.transform.localScale.z * 1.2f);
+                hasbeenBeat = true;
+
+            }
+            else if(target.transform.rotation == Quaternion.FromToRotation(Vector3.zero,Vector3.right))
+            {
+                gameObject.GetComponent<AudioSource>().Play();
+                target.transform.localScale = new Vector3(target.transform.localScale.x * 1.2f, target.transform.localScale.y * 1.2f, target.transform.localScale.z * 0.8f);
+                hasbeenBeat = true;
+
+            }
+            
+
 
             Debug.Log("Smash!!");
         }
@@ -52,11 +65,13 @@ public class Hammer : InteractableObjects
         if (player == null)
             return;
         InteractableObjects objectstointeract = collision.gameObject.GetComponent<InteractableObjects>();
+   
+
+
         if (objectstointeract)
         {
             if (player.HandTarget.velocity.magnitude > 2.2f)
                 Smash(objectstointeract);
         }
     }
-
 }
