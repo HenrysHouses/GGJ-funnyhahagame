@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody HandTarget;
     [SerializeField] private Transform HandBone;
+    [SerializeField] private Transform StretchBone;
+    [SerializeField] private float stretchSpeed;
+    private float stretchMin;
     [SerializeField] private Transform _Start;
     [SerializeField] private AnimationCurve handForce;
     [SerializeField] private float handOffset = 1;
@@ -56,6 +60,8 @@ public class PlayerController : MonoBehaviour
         _inputSettings.set(Controls);
 
         HandTarget.transform.position = _Start.position;
+
+        stretchMin = StretchBone.localPosition.y;
     }
 
     // Update is called once per frame
@@ -87,7 +93,6 @@ public class PlayerController : MonoBehaviour
             Debug.DrawLine(playerCam.transform.position, currentInput.targetPosition);
         }
         _inputs.set(currentInput);
-
     }
 
     private void handleInputs()
@@ -96,7 +101,39 @@ public class PlayerController : MonoBehaviour
         Debug.DrawLine(_inputs.targetPosition, HandTarget.transform.position, Color.red, 0.1f);
         Debug.DrawLine(HandBone.position, HandTarget.transform.position, Color.green, 0.1f);
 
-        HandTarget.transform.position = _inputs.targetPosition;
+        // HandTarget.transform.position = _inputs.targetPosition;
+
+        float dist = Vector3.Distance(_inputs.targetPosition, HandTarget.transform.position);
+
+        HandTarget.AddForce(direction * handForce.Evaluate(dist) * 5);
+
+        Vector3 damping = -HandTarget.velocity * (Mathf.Clamp(handForce.keys[1].value * 5 - dist + 1, 0, handForce.keys[1].value));
+        HandTarget.AddForce(damping);
+
+        Debug.DrawLine(HandTarget.transform.position, (HandTarget.transform.position +  damping) *3, Color.cyan);
+
+        float armStretchLength = Vector3.Distance(HandTarget.transform.position, HandBone.position);
+        if(armStretchLength > 0.05678258f)
+        {
+            Vector3 StretchPos = StretchBone.transform.localPosition;
+            
+            Vector3 StretchDir = HandTarget.transform.position + HandBone.position;
+
+            if(Vector3.Dot(StretchDir, HandBone.right) < 0)
+            {
+                StretchPos.y = Mathf.Clamp(StretchBone.transform.localPosition.y + 1 * stretchSpeed, stretchMin, 1000);
+                // Debug.Log("bigger");
+            }
+            else
+            {
+                StretchPos.y = Mathf.Clamp(StretchBone.transform.localPosition.y - 1 * stretchSpeed, stretchMin, 1000);
+                // Debug.Log("smaller");
+            }
+
+
+            // StretchBone.transform.localPosition =  StretchPos;
+            Debug.Log("STREETCH");
+        }
     }
 
     GameObject FindClosestObjectWithinRadius(Vector3 center, float radius)
