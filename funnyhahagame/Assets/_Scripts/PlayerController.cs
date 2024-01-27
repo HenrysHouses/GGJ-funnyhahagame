@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         handleInputs();
-        moveCamera();
+        moveCameraHorizontal();
         pickupObject();
 
     }
@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
         StretchBone.transform.localPosition =  targetStretchLength;
     }
 
-    private void moveCamera()
+    private void moveCameraHorizontal()
     {
         Vector3 mousePosition = _inputs.MousePosition;
 
