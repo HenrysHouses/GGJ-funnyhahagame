@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Rigidbody HandTarget;
+    [field:SerializeField] public Rigidbody HandTarget { get; private set; }
     [SerializeField] private Transform HandBone;
     [SerializeField] private Transform StretchBone;
     [SerializeField] private float stretchSpeed = 1;
@@ -123,12 +123,9 @@ public class PlayerController : MonoBehaviour
         float armStretchLength = Vector3.Distance(HandTarget.transform.position, HandBone.position);
         targetStretchLength = StretchBone.transform.localPosition;
 
-        Debug.Log(targetStretchLength);
-
         Vector3 StretchDir = HandTarget.transform.position - HandBone.position;
         Debug.DrawLine(HandBone.position, StretchDir, Color.magenta);
 
-        Debug.Log(armStretchLength);
         if((armStretchLength - 0.05678258f) < stretchThreshold && (armStretchLength - 0.05678258f) > -stretchThreshold)
             return;
 
@@ -151,7 +148,7 @@ public class PlayerController : MonoBehaviour
         float moveAmount = 0;
         if (mousePosition.x < Screen.width * 0.25f)
         {
-            Debug.Log("Scalar" + (Screen.width * 0.25f - mousePosition.x) / Screen.width * 0.25f);
+           // Debug.Log("Scalar" + (Screen.width * 0.25f - mousePosition.x) / Screen.width * 0.25f);
             // Move to the left
             moveAmount = - moveSpeed.Evaluate((Screen.width * 0.25f - mousePosition.x) / Screen.width * 0.25f);
 
@@ -209,7 +206,6 @@ public class PlayerController : MonoBehaviour
             if (grabbed_object != null)
             {
                 Debug.DrawLine(HandBone.position, grabbed_object.transform.position, Color.magenta, 0.2f);
-                Debug.Log("Picked up an object");
 
                 grabbed_object.transform.position = HandBone.position;
                 Transform child = grabbed_object.transform.Find("GrabPos");
@@ -223,6 +219,8 @@ public class PlayerController : MonoBehaviour
                 grabbed_object.transform.SetParent(HandBone);
                 grabbed_object.GetComponent<Rigidbody>().isKinematic = true;
                 grabbed_object.layer = 2;
+                grabbed_object.GetComponent<InteractableObjects>().OnPickup(this);
+
             }
             else
                 Debug.Log("No object found within range");
@@ -232,6 +230,7 @@ public class PlayerController : MonoBehaviour
             grabbed_object.layer = 0;
             grabbed_object.GetComponent<Rigidbody>().isKinematic = false;
             grabbed_object = null;
+            grabbed_object.GetComponent<InteractableObjects>().OnRealease();
         }
     }
 }

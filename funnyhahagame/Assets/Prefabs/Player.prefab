@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb01f82cbbb240142a30da4f50119a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HandTarget: {fileID: 826510992006386933}
+  <HandTarget>k__BackingField: {fileID: 826510992006386933}
   HandBone: {fileID: 3398660492723764975}
   StretchBone: {fileID: 4471314815584124606}
   stretchSpeed: 0.0025
@@ -470,6 +470,12 @@ MonoBehaviour:
     m_Bits: 0
   LeftLimit: {fileID: 0}
   RightLimit: {fileID: 0}
+  moveSpeed:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &826510991970651408
 PrefabInstance:
   m_ObjectHideFlags: 0

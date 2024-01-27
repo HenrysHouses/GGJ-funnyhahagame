@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Knife : MonoBehaviour
+public class Knife : InteractableObjects
 {
     public float cutTimer, cutTimerReset = 1;
     [SerializeField]
@@ -20,6 +20,8 @@ public class Knife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
        if(hasCut)
         {
             cutTimer += Time.deltaTime;
@@ -68,7 +70,9 @@ public class Knife : MonoBehaviour
         InteractableObjects objectstointeract = collision.gameObject.GetComponent<InteractableObjects>();
         if (objectstointeract)
         {
-            Cut(objectstointeract);
+            Debug.Log(player.HandTarget.velocity.magnitude);
+            if(player.HandTarget.velocity.magnitude > 2.2f)
+             Cut(objectstointeract);
         }
     }
     

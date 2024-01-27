@@ -6,6 +6,7 @@ public class InteractableObjects : MonoBehaviour
 {
 
     public int timeCut, timeSmashed;
+    public PlayerController player;
 
     [field:SerializeField] public LayerMask Layers { get; private set; }
 
@@ -19,5 +20,15 @@ public class InteractableObjects : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnPickup(PlayerController playerCon)
+    {
+        player = playerCon;
+    }
+
+    public void OnRealease()
+    {
+        player = null;
     }
 }
