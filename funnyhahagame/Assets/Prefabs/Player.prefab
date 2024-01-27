@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 653029642}
   - component: {fileID: 653029643}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: WallTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653029641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2, y: 0, z: 0}
+  m_LocalPosition: {x: -2.31, y: 0, z: 0}
   m_LocalScale: {x: 0.063119, y: 39.516, z: 64.64251}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -461,7 +461,7 @@ MonoBehaviour:
   handOffset: 0.3
   RaycastMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1
   IgnoreMask:
     serializedVersion: 2
     m_Bits: 0
