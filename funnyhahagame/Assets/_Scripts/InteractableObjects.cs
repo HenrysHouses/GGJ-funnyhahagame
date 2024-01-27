@@ -5,9 +5,12 @@ using UnityEngine;
 public class InteractableObjects : MonoBehaviour
 {
 
+
     public int timeCut, timeSmashed;
     private Rigidbody _rigidbody;
     private Collider _collider;
+    public float burnedTimer;
+
     public PlayerController player;
 
     [field:SerializeField] public LayerMask Layers { get; private set; }
