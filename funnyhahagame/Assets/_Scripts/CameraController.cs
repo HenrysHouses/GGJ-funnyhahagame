@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] private Transform LeftLimit;
+    [SerializeField] private Transform RightLimit;
+
+    [SerializeField] private GameObject Player;
+
     private float sensitivity = 1f; // Controls the speed of tilting
     private float minAngle = 15f; // The minimum angle the camera can tilt to
     private float maxAngle = 50f; // The maximum angle the camera can tilt to
@@ -19,8 +24,49 @@ public class CameraController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        UpdateHorizontal();
+        UpdateVertical();
+    }
+
+    private void UpdateHorizontal()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+
+        // Calculate the amount to move the GameObject
+        float moveAmount = 0;
+        if (mousePosition.x < Screen.width * 0.25f)
+        {
+            // Debug.Log("Scalar" + (Screen.width * 0.25f - mousePosition.x) / Screen.width * 0.25f);
+            // Move to the left
+            moveAmount = -moveSpeed.Evaluate((Screen.width * 0.25f - mousePosition.x) / Screen.width * 0.25f);
+
+
+        }
+        else if (mousePosition.x > Screen.width * 0.75f)
+        {
+            // Move to the right
+            moveAmount = moveSpeed.Evaluate((mousePosition.x - Screen.width * 0.75f) / Screen.width * 0.25f);
+
+        }
+
+        // Adjust the GameObject's position
+        if (Mathf.Abs(moveAmount) > 0)
+        {
+            var new_z = Player.transform.position.z + moveAmount * 20;
+
+            if (new_z < LeftLimit.position.z)
+                new_z = LeftLimit.position.z;
+            else if (new_z > RightLimit.position.z)
+                new_z = RightLimit.position.z;
+
+            Player.transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y, new_z);
+        }
+
+    }
+    // Update is called once per frame
+    void UpdateVertical()
     {
         Vector3 mousePosition = Input.mousePosition;
 

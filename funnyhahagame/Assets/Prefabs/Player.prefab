@@ -223,6 +223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78320736ef3d8e74b848cf78c77169e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LeftLimit: {fileID: 0}
+  RightLimit: {fileID: 0}
+  Player: {fileID: 826510992537228833}
   moveSpeed:
     serializedVersion: 2
     m_Curve:
@@ -246,7 +249,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
+      value: 0.50707626
       inSlope: 2
       outSlope: 2
       tangentMode: 0
@@ -514,41 +517,6 @@ MonoBehaviour:
   GrabbableObjectMask:
     serializedVersion: 2
     m_Bits: 0
-  LeftLimit: {fileID: 0}
-  RightLimit: {fileID: 0}
-  moveSpeed:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.9134103
-      value: 0.35677028
-      inSlope: 1.0518205
-      outSlope: 1.0518205
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.9791667
-      value: 0.5023585
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1001 &826510991970651408
 PrefabInstance:
   m_ObjectHideFlags: 0
