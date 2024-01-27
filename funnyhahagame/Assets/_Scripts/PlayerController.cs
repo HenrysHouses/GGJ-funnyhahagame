@@ -229,8 +229,8 @@ public class PlayerController : MonoBehaviour
             grabbed_object.transform.parent = null;
             grabbed_object.layer = 0;
             grabbed_object.GetComponent<Rigidbody>().isKinematic = false;
-            grabbed_object = null;
             grabbed_object.GetComponent<InteractableObjects>().OnRealease();
+            grabbed_object = null;
         }
     }
 }

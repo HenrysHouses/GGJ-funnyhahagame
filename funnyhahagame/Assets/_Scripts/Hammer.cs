@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hammer : MonoBehaviour
+public class Hammer : InteractableObjects
 {
     public float hitTimer, hitTimerReset = 1;
     [SerializeField]
@@ -33,7 +33,7 @@ public class Hammer : MonoBehaviour
 
     }
 
-    public void Cut(InteractableObjects target)
+    public void Smash(InteractableObjects target)
     {
         if (!hasbeenBeat && (target.Layers & (1 << 7)) != 0)
         {
@@ -48,10 +48,14 @@ public class Hammer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
+        if (player == null)
+            return;
         InteractableObjects objectstointeract = collision.gameObject.GetComponent<InteractableObjects>();
         if (objectstointeract)
         {
-            Cut(objectstointeract);
+            if (player.HandTarget.velocity.magnitude > 2.2f)
+                Smash(objectstointeract);
         }
     }
 

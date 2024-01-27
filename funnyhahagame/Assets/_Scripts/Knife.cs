@@ -67,10 +67,13 @@ public class Knife : InteractableObjects
 
     private void OnCollisionEnter(Collision collision)
     {
+
+        if (player == null)
+            return;
+
         InteractableObjects objectstointeract = collision.gameObject.GetComponent<InteractableObjects>();
         if (objectstointeract)
         {
-            Debug.Log(player.HandTarget.velocity.magnitude);
             if(player.HandTarget.velocity.magnitude > 2.2f)
              Cut(objectstointeract);
         }
