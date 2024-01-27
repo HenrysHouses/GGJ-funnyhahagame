@@ -5,16 +5,27 @@ using UnityEngine;
 public class IngredientObject : InteractableObjects
 {
     [SerializeField] public Ingredient ingredient;
+    private Rigidbody _rigidbody;
+    private Collider _collider;
 
-    // Start is called before the first frame update
-    void Start()
+    internal virtual void Start()
     {
-        
+        _rigidbody = GetComponent<Rigidbody>();
+        _collider = GetComponent<Collider>();
     }
 
-    // Update is called once per frame
-    void Update()
+    internal virtual void OnCollisionEnter(Collision other)
     {
-        
+        if(player == null)
+            return;
+
+        if(other.collider.TryGetComponent(out PlateController plate))
+        {
+            plate.addToPlate(transform);
+            _rigidbody.isKinematic = true;
+            _collider.enabled = false;
+            player.loseObject();
+            return;
+        }
     }
 }

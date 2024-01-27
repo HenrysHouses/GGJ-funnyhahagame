@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1095940632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1095940633}
+  m_Layer: 0
+  m_Name: GrabPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1095940633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095940632}
+  m_LocalRotation: {x: 0.008802043, y: 0.008649743, z: 0.008649744, w: 0.99988645}
+  m_LocalPosition: {x: 0.00877, y: -0.00043, z: 0.01684}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1435068986058281276}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 1, y: 1, z: 1}
 --- !u!1 &1774896605915204486
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,10 +45,9 @@ GameObject:
   - component: {fileID: 1468414128025617209}
   - component: {fileID: 1468414128025617210}
   - component: {fileID: 1468414128025617208}
-  - component: {fileID: 1468414128025617211}
   - component: {fileID: 1468414128025617206}
   m_Layer: 0
-  m_Name: fish
+  m_Name: Fish
   m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +64,8 @@ Transform:
   m_LocalPosition: {x: -0.971, y: 2.336, z: 1.571}
   m_LocalScale: {x: 40, y: 63.2, z: 40}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1095940633}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -171.977, y: 0, z: 96.075}
@@ -212,23 +243,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5484d4b3ff50d8f49955f63412cab9d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floppingForce: 0
-  randomHit: 0
---- !u!114 &1468414128025617211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1774896605915204486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5202c8773edd4464cb1526797ea5d27a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  timeCut: 0
+  timeSmashed: 0
+  burnedTimer: 0
+  player: {fileID: 0}
   <Layers>k__BackingField:
     serializedVersion: 2
-    m_Bits: 193
+    m_Bits: 448
+  ingredient:
+    Type: 0
+    Amount: 0
+    timesCut: 0
+    timesSmashed: 0
+    burnProgress: 0
+  floppingForce: 0
+  randomHit: 0
 --- !u!64 &1468414128025617206
 MeshCollider:
   m_ObjectHideFlags: 0
