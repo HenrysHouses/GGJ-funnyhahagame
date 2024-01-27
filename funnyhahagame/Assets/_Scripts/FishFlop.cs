@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishFlop : MonoBehaviour
+public class FishFlop : IngredientObject
 {
     public float floppingForce;
     private float floppingtimer;
@@ -12,8 +12,9 @@ public class FishFlop : MonoBehaviour
     private AudioSource sound;
 
     // Start is called before the first frame update
-    void Start()
+    internal override void Start()
     {
+        base.Start();
         sound = GetComponent<AudioSource>();
     }
 

@@ -22,7 +22,7 @@ public class Knife : InteractableObjects
         }
     }
 
-    public void Cut(InteractableObjects target)
+    public void Cut(IngredientObject target)
     {
         if (target.timeCut > 3)
         {
@@ -37,10 +37,10 @@ public class Knife : InteractableObjects
             gameObject.GetComponent<AudioSource>().Play();
             GameObject instance0 = Instantiate(target.gameObject, target.transform.position, Quaternion.identity);
             instance0.transform.localScale = new Vector3(target.transform.localScale.x * 0.5f, target.transform.localScale.y * 0.5f, target.transform.localScale.z * 0.5f);
-            instance0.GetComponent<InteractableObjects>().timeCut = target.timeCut +1;
-           GameObject instance1 = Instantiate(target.gameObject, target.transform.position, Quaternion.identity);
-           instance1.transform.localScale = new Vector3(target.transform.localScale.x * 0.5f, target.transform.localScale.y * 0.5f, target.transform.localScale.z * 0.5f);
-            instance1.GetComponent<InteractableObjects>().timeCut = target.timeCut + 1;
+            instance0.GetComponent<IngredientObject>().timeCut = target.timeCut +1;
+            GameObject instance1 = Instantiate(target.gameObject, target.transform.position, Quaternion.identity);
+            instance1.transform.localScale = new Vector3(target.transform.localScale.x * 0.5f, target.transform.localScale.y * 0.5f, target.transform.localScale.z * 0.5f);
+            instance1.GetComponent<IngredientObject>().timeCut = target.timeCut + 1;
 
             Destroy(target.gameObject);
             hasCut = true;
