@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5879661413945272508}
   - component: {fileID: 4571261037398796493}
   - component: {fileID: 3617898369054492439}
+  - component: {fileID: 5654875700327909185}
   m_Layer: 0
   m_Name: brain
   m_TagString: Grabbable
@@ -28,14 +29,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134896205956297395}
-  m_LocalRotation: {x: -0.48318034, y: 0.5162721, z: -0.51627195, w: 0.4831802}
+  m_LocalRotation: {x: -0.4831791, y: 0.5162732, z: -0.5162732, w: 0.4831791}
   m_LocalPosition: {x: -1.385, y: 0.482, z: -1.6216079}
   m_LocalScale: {x: 30.2, y: 46.211742, z: 46.15353}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.793, y: 90, z: -90}
 --- !u!33 &4412177828224559020
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -135,3 +136,18 @@ MonoBehaviour:
   <Layers>k__BackingField:
     serializedVersion: 2
     m_Bits: 448
+--- !u!114 &5654875700327909185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134896205956297395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c6e6ad118788d40a2bb2052d28f1e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSize: 2
+  growFactor: 0.5
+  waitTime: 0
