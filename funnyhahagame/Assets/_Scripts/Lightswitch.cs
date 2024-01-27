@@ -5,6 +5,7 @@ using UnityEngine;
 public class Lightswitch : MonoBehaviour
 {
     public Light[] lights;
+    public bool lightsOn;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,10 @@ public class Lightswitch : MonoBehaviour
         {
             Light light1 = light.GetComponent<Light>();
             light1.enabled = !light1.enabled;
+            if (light1.enabled)
+                lightsOn = true;
+            else
+                lightsOn = false;
         }
     }
 
