@@ -7,8 +7,6 @@ public class Knife : MonoBehaviour
     public float cutTimer, cutTimerReset = 1;
     [SerializeField]
     private bool hasCut;
-
-    private Rigidbody rb;
     
     
    
@@ -68,7 +66,7 @@ public class Knife : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         InteractableObjects objectstointeract = collision.gameObject.GetComponent<InteractableObjects>();
-        if (objectstointeract &&)
+        if (objectstointeract)
         {
             Cut(objectstointeract);
         }
