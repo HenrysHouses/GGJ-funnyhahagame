@@ -15,14 +15,6 @@ MonoBehaviour:
   <recipe>k__BackingField:
     Ingredients:
     - Type: 0
-      timesCut: 1
-      timesSmashed: 0
-      burnProgress: 0
-    - Type: 3
       timesCut: 0
-      timesSmashed: 1
-      burnProgress: 0
-    - Type: 0
-      timesCut: 1
       timesSmashed: 0
       burnProgress: 0

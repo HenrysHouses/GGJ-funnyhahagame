@@ -4839,13 +4839,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8026140386073735307}
-  m_LocalRotation: {x: -0, y: -0, z: 0.77934563, w: 0.62659425}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7793435, w: 0.62659705}
   m_LocalPosition: {x: -1.62, y: 0.26, z: -1.08}
   m_LocalScale: {x: 0.2820754, y: 0.2820754, z: 0.2820754}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8878388449851429731}
   - {fileID: 8026140387069696309}
+  - {fileID: 8026140386122797054}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 102.401}
@@ -4890,15 +4891,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41f4d3280be06a49b8cf8d7d0c3c44e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeCut: 0
-  timeSmashed: 0
-  burnedTimer: 0
   player: {fileID: 0}
   <Layers>k__BackingField:
     serializedVersion: 2
     m_Bits: 0
   shootPoint: {fileID: 8026140387069696309}
   burnStrength: 6
+  BurnTheburger: 0
+  pegboardPos: {fileID: 0}
+  resetPos: 0
 --- !u!82 &3788752619343837262
 AudioSource:
   m_ObjectHideFlags: 0

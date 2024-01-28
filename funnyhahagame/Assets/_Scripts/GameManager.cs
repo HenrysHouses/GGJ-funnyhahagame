@@ -10,22 +10,39 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject PlatePrefab;
     [SerializeField] DishRecipe_ScriptableObject[] Dishes;
 
+    private GameObject current_plate;
+    private int plate_index = 0;
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        if (Dishes.Length > 0)
-            instantiatePlate(Dishes[0]);
+        instantiatePlate();
+        Debug.Log("Number of dishes" + Dishes.Length);
     }
 
     void Update()
     {
-
+        if (current_plate && current_plate.GetComponent<PlateController>().handed_in)
+        {
+            plate_index++;
+            instantiatePlate();
+        }
     }
 
-    private void instantiatePlate(DishRecipe_ScriptableObject recipe)
+    private void instantiatePlate()
     {
-        GameObject spawn = Instantiate(PlatePrefab);
-        spawn.transform.position = transform.position;
-        spawn.GetComponent<PlateController>().init(recipe.recipe);
+        if (current_plate != null)
+        {
+            Destroy(current_plate);
+        }
+        if (plate_index < Dishes.Length)
+        {
+            DishRecipe_ScriptableObject recipe = Dishes[plate_index];
+            current_plate = Instantiate(PlatePrefab);
+            current_plate.transform.position = transform.position;
+            current_plate.GetComponent<PlateController>().init(recipe.recipe);
+        }
+            
     }
 }

@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <HandTarget>k__BackingField: {fileID: 826510992006386933}
-  HandBone: {fileID: 3398660492723764975}
+  HandBone: {fileID: 5202539141016214099}
   StretchBone: {fileID: 4471314815584124606}
   stretchSpeed: 0.0025
   stretchThreshold: 0.025
@@ -647,12 +647,6 @@ MonoBehaviour:
 --- !u!4 &933056713876089595 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c94b309adb163c149a79f754fb3686ad,
-    type: 3}
-  m_PrefabInstance: {fileID: 826510991970651408}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3398660492723764975 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -6606168327722503169, guid: c94b309adb163c149a79f754fb3686ad,
     type: 3}
   m_PrefabInstance: {fileID: 826510991970651408}
   m_PrefabAsset: {fileID: 0}

@@ -167,10 +167,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccf1a645a0f1bc4ca8da2af3efa94de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlatePrefab: {fileID: 4370806778948683685, guid: fe65e25b44a6fe94f916b52e32d042e6,
+  PlatePrefab: {fileID: 4532730688430116300, guid: 659458fb643af0d40bbf70054aeb8661,
     type: 3}
   Dishes:
   - {fileID: 11400000, guid: 0a08b527d89895e4da0f453122cbc98b, type: 2}
+  - {fileID: 11400000, guid: 6c0e08cae257cde4f9adcee008612a1d, type: 2}
 --- !u!1 &457086101
 GameObject:
   m_ObjectHideFlags: 0

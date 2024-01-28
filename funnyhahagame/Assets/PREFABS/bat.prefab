@@ -116,9 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587c94bfead38b749a20c525185422cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeCut: 0
-  timeSmashed: 0
-  burnedTimer: 0
   player: {fileID: 0}
   <Layers>k__BackingField:
     serializedVersion: 2
@@ -128,6 +125,8 @@ MonoBehaviour:
   hasBeenBeat: 0
   SpashVFX: {fileID: 7575538337374612610, guid: 3fe8379d20e6f354fa54cb5acd4b8f6a,
     type: 3}
+  pegboardPos: {fileID: 0}
+  resetPos: 0
 --- !u!82 &4023990942413507720
 AudioSource:
   m_ObjectHideFlags: 0

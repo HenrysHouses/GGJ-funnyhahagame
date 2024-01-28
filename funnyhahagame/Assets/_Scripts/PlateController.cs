@@ -6,12 +6,16 @@ public class PlateController : InteractableObjects
 {
     private Recipe DesiredDish; 
     private Recipe platedDish;
-    private bool completed;
+    public bool completed;
+    public bool handed_in;
 
     public void init(Recipe _Recipe)
     {
         DesiredDish = _Recipe;
         platedDish = new Recipe();
+        completed = false;
+
+        Debug.Log("Expected dish: " + DesiredDish);
     }
 
     public void UpdateCompletion()
