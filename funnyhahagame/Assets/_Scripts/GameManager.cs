@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        instantiatePlate(Dishes[0]);
+        if (Dishes.Count > 0)
+            instantiatePlate(Dishes[0]);
     }
 
     private void instantiatePlate(DishRecipe_ScriptableObject recipe)
