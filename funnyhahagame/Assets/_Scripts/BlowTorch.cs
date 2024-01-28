@@ -9,7 +9,45 @@ public class BlowTorch : InteractableObjects
     private Transform shootPoint;
     [SerializeField] float burnStrength = 6;
     public bool BurnTheburger;
+    public Transform pegboardPos;
+    public bool resetPos;
 
+
+
+
+    public void Start()
+    {
+        transform.position = pegboardPos.position;
+        transform.rotation = pegboardPos.rotation;
+        GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+
+    public void Update()
+    {
+
+        if (gameObject == null)
+        {
+            gameObject.transform.position = pegboardPos.position;
+            transform.rotation = pegboardPos.rotation;
+            GetComponent<Rigidbody>().isKinematic = true;
+
+        }
+
+        if (resetPos == true)
+        {
+            float timer = +Time.deltaTime;
+            if (timer > 10)
+            {
+                GetComponent<Rigidbody>().isKinematic = true;
+                gameObject.transform.position = pegboardPos.position;
+                transform.rotation = pegboardPos.rotation;
+
+
+                timer = 0;
+            }
+        }
+    }
 
     public override void OnPickup(PlayerController playerCon)
     {
@@ -20,6 +58,7 @@ public class BlowTorch : InteractableObjects
         StartCoroutine(Burn());
 
         transform.rotation = new Quaternion(0.396383733f,-0.60298115f,0.371423066f,0.584241927f);
+        resetPos = false;
     }
 
     public override void OnRelease()
@@ -27,7 +66,7 @@ public class BlowTorch : InteractableObjects
         base.OnRelease();
         GetComponent<AudioSource>().Stop();
         GetComponentInChildren<ParticleSystem>().Stop();
-
+        resetPos = true;
 
     }
 

@@ -18,7 +18,7 @@ public class BurningBurger : MonoBehaviour
     void Update()
     {
         
-        if( ingredient.ingredient.burnProgress > 1)
+        if(ingredient.ingredient.burnProgress > 1)
         {
             VFXs.Play();
         }

@@ -8,6 +8,20 @@ public class Knife : InteractableObjects
     [SerializeField]
     private bool hasCut;
     public GameObject SpashVFX;
+    public Transform pegboardPos;
+    public bool resetPos;
+    float timer;
+
+
+
+
+
+    public void Start()
+    {
+        transform.position = pegboardPos.position;
+        transform.rotation = pegboardPos.rotation;
+        GetComponent<Rigidbody>().isKinematic = true;
+    }
 
     // Update is called once per frame
     void Update()
@@ -21,12 +35,48 @@ public class Knife : InteractableObjects
                 cutTimer = 0;
             }
         }
+
+        if (gameObject == null)
+        {
+            gameObject.transform.position = pegboardPos.position;
+            transform.rotation = pegboardPos.rotation;
+
+            GetComponent<Rigidbody>().isKinematic = true;
+            GetComponent<Rigidbody>().useGravity = false;
+
+
+        }
+
+        if (resetPos == true)
+        {
+            timer = +Time.deltaTime;
+            Debug.Log(timer);
+            if (timer > 10)
+            {
+                GetComponent<Rigidbody>().useGravity = false;
+
+                GetComponent<Rigidbody>().isKinematic = true;
+                gameObject.transform.position = pegboardPos.position;
+                transform.rotation = pegboardPos.rotation;
+
+
+                timer = 0;
+            }
+        }
     }
 
     public override void OnPickup(PlayerController playerCon)
     {
         base.OnPickup(playerCon);
         transform.rotation = new Quaternion(0.0813010931f,0.0425013602f,-0.990172446f,0.105557606f);
+    }
+
+
+    public override void OnRelease()
+    {
+        base.OnRelease();
+
+        resetPos = true;
     }
 
     public void Cut(IngredientObject target)

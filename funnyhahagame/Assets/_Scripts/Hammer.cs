@@ -8,8 +8,17 @@ public class Hammer : InteractableObjects
     [SerializeField]
     private bool hasBeenBeat;
     public GameObject SpashVFX;
-
+    public Transform pegboardPos;
+    public bool resetPos;
     // Update is called once per frame
+
+
+
+    private void Start()
+    {
+        transform.position = pegboardPos.position;
+        GetComponent<Rigidbody>().isKinematic = true;
+    }
     void Update()
     {
         if (hasBeenBeat)
@@ -21,12 +30,40 @@ public class Hammer : InteractableObjects
                 hitTimer = 0;
             }
         }
+
+
+        if(gameObject == null)
+        {
+            gameObject.transform.position = pegboardPos.position;
+            GetComponent<Rigidbody>().isKinematic = true;
+
+        }
+
+        if (resetPos == true)
+        {
+            float timer =+ Time.deltaTime;
+            if(timer > 10)
+            {
+                GetComponent<Rigidbody>().isKinematic = true;
+                gameObject.transform.position = pegboardPos.position;
+
+                timer = 0;
+            }
+        }
     }
 
     public override void OnPickup(PlayerController playerCon)
     {
         base.OnPickup(playerCon);
         transform.rotation = new Quaternion(0.517273605f,-0.478444576f,-0.54497844f,-0.454441905f);
+        resetPos = false;
+
+    }
+
+    public override void OnRelease()
+    {
+        base.OnRelease();
+        resetPos = true;
     }
 
     public void Smash(IngredientObject target)

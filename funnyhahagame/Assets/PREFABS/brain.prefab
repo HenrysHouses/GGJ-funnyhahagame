@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4571261037398796493}
   - component: {fileID: 3617898369054492439}
   - component: {fileID: 5654875700327909185}
+  - component: {fileID: 7441763744308058690}
   m_Layer: 0
   m_Name: brain
   m_TagString: Grabbable
@@ -129,9 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5202c8773edd4464cb1526797ea5d27a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeCut: 0
-  timeSmashed: 0
-  burnedTimer: 0
   player: {fileID: 0}
   <Layers>k__BackingField:
     serializedVersion: 2
@@ -151,3 +149,24 @@ MonoBehaviour:
   maxSize: 2
   growFactor: 0.5
   waitTime: 0
+--- !u!114 &7441763744308058690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134896205956297395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464248521cf332843991438265f7097b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  <Layers>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 448
+  ingredient:
+    Type: 4
+    timesCut: 0
+    timesSmashed: 0
+    burnProgress: 0
