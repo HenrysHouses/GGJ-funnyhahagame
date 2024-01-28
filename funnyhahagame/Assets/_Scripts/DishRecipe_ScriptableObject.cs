@@ -9,7 +9,8 @@ public enum IngredientType
     BottomBun,
     Patty,
     Brain,
-    BabyPowder
+    BabyPowder,
+    toiletPaper
 }
 
 [System.Serializable]
