@@ -278,16 +278,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464248521cf332843991438265f7097b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeCut: 0
-  timeSmashed: 0
-  burnedTimer: 0
   player: {fileID: 0}
+  isPickupp: 1
   <Layers>k__BackingField:
     serializedVersion: 2
     m_Bits: 448
   ingredient:
-    Type: 0
-    Amount: 0
+    Type: 7
     timesCut: 0
     timesSmashed: 0
     burnProgress: 0

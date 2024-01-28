@@ -98,6 +98,8 @@ MonoBehaviour:
     type: 3}
   BabyPowder: {fileID: 2828401844125908012, guid: e91cc8786442e4c4482d2b5c46b36287,
     type: 3}
+  fullBurger: {fileID: 7344443496639818029, guid: 817a49b2c43ae294dbeda4ecfe3bc4d1,
+    type: 3}
 --- !u!1 &8009359073057588762
 GameObject:
   m_ObjectHideFlags: 0

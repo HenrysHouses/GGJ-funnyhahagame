@@ -129,11 +129,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  isPickupp: 1
   <Layers>k__BackingField:
     serializedVersion: 2
     m_Bits: 448
   ingredient:
-    Type: 0
+    Type: 6
     timesCut: 0
     timesSmashed: 0
     burnProgress: 0

@@ -10,7 +10,8 @@ public enum IngredientType
     Patty,
     Brain,
     BabyPowder,
-    toiletPaper
+    toiletPaper,
+    FullBurger
 }
 
 [System.Serializable]
@@ -60,7 +61,7 @@ public struct Ingredient
 
     public override string ToString()
     {
-        string stdout = "• ";
+        string stdout = "ï¿½ ";
 
         stdout += Type + ", cuts: ";
 

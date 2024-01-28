@@ -15,6 +15,7 @@ public class JackBoxController : InteractableObjects
     public GameObject brain;
     public GameObject toiletPaper;
     public GameObject BabyPowder;
+    public GameObject fullBurger;
 
     public override void OnPickup(PlayerController playerCon)
     {
@@ -51,6 +52,9 @@ public class JackBoxController : InteractableObjects
                     break;
                 case IngredientType.toiletPaper:
                     Instantiate(toiletPaper, Origin.transform.position, Quaternion.identity);
+                    break;
+                case IngredientType.FullBurger:
+                    Instantiate(fullBurger, Origin.transform.position, Quaternion.identity);
                     break;
             }
         }
