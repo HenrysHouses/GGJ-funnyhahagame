@@ -13,6 +13,8 @@ public class BlowTorch : InteractableObjects
     {
         base.OnPickup(playerCon);
         StartCoroutine(Burn());
+
+        transform.rotation = new Quaternion(0.396383733f,-0.60298115f,0.371423066f,0.584241927f);
     }
 
     public IEnumerator Burn()

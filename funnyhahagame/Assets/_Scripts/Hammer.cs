@@ -23,6 +23,12 @@ public class Hammer : InteractableObjects
         }
     }
 
+    public override void OnPickup(PlayerController playerCon)
+    {
+        base.OnPickup(playerCon);
+        transform.rotation = new Quaternion(0.517273605f,-0.478444576f,-0.54497844f,-0.454441905f);
+    }
+
     public void Smash(InteractableObjects target)
     {
         if (!hasBeenBeat && (target.Layers & (1 << 7)) != 0)

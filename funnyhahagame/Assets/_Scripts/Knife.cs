@@ -23,6 +23,12 @@ public class Knife : InteractableObjects
         }
     }
 
+    public override void OnPickup(PlayerController playerCon)
+    {
+        base.OnPickup(playerCon);
+        transform.rotation = new Quaternion(0.0813010931f,0.0425013602f,-0.990172446f,0.105557606f);
+    }
+
     public void Cut(IngredientObject target)
     {
         if (target.timeCut > 3)
