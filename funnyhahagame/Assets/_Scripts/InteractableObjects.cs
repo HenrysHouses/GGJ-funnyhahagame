@@ -5,6 +5,8 @@ using UnityEngine;
 public class InteractableObjects : MonoBehaviour
 {
     public PlayerController player;
+    public bool isPickupp = true;
+    
 
     [field: SerializeField] public LayerMask Layers { get; private set; }
 

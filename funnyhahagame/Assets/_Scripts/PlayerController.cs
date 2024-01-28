@@ -168,11 +168,18 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.DrawLine(HandBone.position, grabbed_object.transform.position, Color.magenta, 0.2f);
 
-                grabbed_object.transform.SetParent(HandBone);
-                grabbed_object.transform.localPosition = Vector3.zero;
-                grabbed_object.GetComponent<Rigidbody>().isKinematic = true;
-                grabbed_object.layer = 2;
-                grabbed_object.GetComponent<InteractableObjects>().OnPickup(this);
+                InteractableObjects grabbable = grabbed_object.GetComponent<InteractableObjects>();
+                if(grabbable.isPickupp)
+                {
+                    grabbed_object.transform.SetParent(HandBone);
+                    grabbed_object.transform.localPosition = Vector3.zero;
+                    grabbed_object.GetComponent<Rigidbody>().isKinematic = true;
+                    grabbed_object.layer = 2;
+
+                }
+
+                    grabbable.OnPickup(this);
+
 
             }
             else

@@ -18,6 +18,8 @@ public class Hammer : InteractableObjects
     private void Start()
     {
         transform.position = pegboardPos.position;
+        transform.rotation = pegboardPos.rotation;
+
         GetComponent<Rigidbody>().isKinematic = true;
     }
     void Update()

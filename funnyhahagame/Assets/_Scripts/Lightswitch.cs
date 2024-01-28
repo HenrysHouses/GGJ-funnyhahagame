@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lightswitch : MonoBehaviour
+public class Lightswitch : InteractableObjects
 {
     public Light[] lights;
     public bool lightsOn;
     // Start is called before the first frame update
     void Start()
     {
-        
+        TurnOnLights();
     }
 
     // Update is called once per frame
@@ -19,6 +19,15 @@ public class Lightswitch : MonoBehaviour
         {
             TurnOnLights();
         }
+    }
+
+    public override void OnPickup(PlayerController playerCon)
+    {
+        base.OnPickup(playerCon);
+
+        TurnOnLights();
+
+        GetComponent<AudioSource>().Play();
     }
 
 
