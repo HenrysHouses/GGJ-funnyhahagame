@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class TrashHandler : MonoBehaviour
 {
+    GameObject gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
@@ -18,8 +19,9 @@ public class TrashHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out InteractableObjects obj))
+        if (other.TryGetComponent(out PlateController obj))
         {
+            gameManager.GetComponent<GameManager>().instantiatePlate();
 
         }
     }

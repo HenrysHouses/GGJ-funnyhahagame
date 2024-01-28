@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void instantiatePlate()
+    public void instantiatePlate()
     {
         if (current_plate != null)
         {
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
             }
 
             current_plate = Instantiate(PlatePrefab);
-            current_plate.transform.position = transform.position;
+            current_plate.transform.position = transform.position - new Vector3(0, 0, 2);
             current_plate.GetComponent<PlateController>().init(recipe.recipe);
 
             GameObject ingredientBox = Instantiate(JackBoxPrefab, transform.position, Quaternion.identity);
