@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject current_plate;
     public GameObject current_ingredientBox;
     private int plate_index = 0;
+    List<AudioSource> sounds = new List<AudioSource>();
+
 
     
 
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
         }
             
         
-
+        
 
     }
 }
