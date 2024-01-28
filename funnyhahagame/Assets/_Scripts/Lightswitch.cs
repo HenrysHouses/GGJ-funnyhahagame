@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Lightswitch : InteractableObjects
 {
+    public AudioSource NarraterAudio0, NarraterAudio1, NarraterAudio2, NarraterAudio3;
     public Light[] lights;
-    public bool lightsOn;
+    public bool lightsOn,played1,played2,played3;
+    public float lighttimer;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,45 @@ public class Lightswitch : InteractableObjects
         {
             TurnOnLights();
         }
+
+        if(!lightsOn)
+        {
+            lighttimer += Time.deltaTime;
+            if(lighttimer > 17)
+            {
+                if(!NarraterAudio1.isPlaying && !played1)
+                {
+                    NarraterAudio1.Play();
+                    played1 = true;
+
+                }
+            }
+
+            else if (lighttimer > 30)
+            {
+                if (!NarraterAudio2.isPlaying && !played2)
+                {
+                    NarraterAudio2.Play();
+                    played2 = true;
+
+                }
+            }
+
+            else if (lighttimer > 47)
+            {
+                if (!NarraterAudio3.isPlaying && !played3)
+                {
+                    NarraterAudio1.Play();
+                    played3 = true;
+
+                }
+
+                TurnOnLights();
+                GetComponent<AudioSource>().Play();
+
+
+            }
+        }
     }
 
     public override void OnPickup(PlayerController playerCon)
@@ -28,11 +70,13 @@ public class Lightswitch : InteractableObjects
         TurnOnLights();
 
         GetComponent<AudioSource>().Play();
+        NarraterAudio0.Play();
     }
 
 
     public void TurnOnLights()
     {
+        lighttimer = 0;
         foreach (Light light in lights)
         {
             Light light1 = light.GetComponent<Light>();
@@ -43,7 +87,6 @@ public class Lightswitch : InteractableObjects
                 lightsOn = false;
         }
     }
-
 
 
 }
