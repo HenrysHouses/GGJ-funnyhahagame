@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8635788293884318296}
   - component: {fileID: 5781651031408731794}
   - component: {fileID: 48482979114602096}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5421331794568726343}
-  m_LocalRotation: {x: -0.69212365, y: -0.14479257, z: -0.14479257, w: 0.6921236}
+  m_LocalRotation: {x: -0.6921234, y: -0.14479382, z: -0.14479382, w: 0.6921234}
   m_LocalPosition: {x: -0.769, y: 0.389, z: 3.979}
   m_LocalScale: {x: 101.8, y: 6.739321, z: 67.27766}
   m_ConstrainProportionsScale: 1
@@ -95,5 +95,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.046424527, z: 0.019999998}
-  m_Center: {x: -4.1224836e-13, y: 0.00022132414, z: 1.3242933e-13}
+  m_Size: {x: 0.02, y: 0.08096464, z: 0.019999998}
+  m_Center: {x: 4.974969e-11, y: 0.0174913, z: -2.700251e-19}
