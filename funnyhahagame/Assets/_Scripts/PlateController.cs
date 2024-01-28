@@ -27,6 +27,8 @@ public class PlateController : InteractableObjects
         // Check plate state
         if (DesiredDish.Ingredients.Count == platedDish.Ingredients.Count)
         {
+            Debug.Log("Des" + DesiredDish);
+            Debug.Log("pla" + platedDish);
             if (CompareTwoRecipes(DesiredDish, platedDish))
             {
                 completed = true;
@@ -69,6 +71,8 @@ public class PlateController : InteractableObjects
                 a_contains_b++;
             }
         }
+
+        if (a_contains_b == 0 || b_contains_a == 0) return false;
 
         return a_contains_b == b_contains_a;
     }

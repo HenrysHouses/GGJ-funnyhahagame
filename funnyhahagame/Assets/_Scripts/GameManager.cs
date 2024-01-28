@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+using TMPro;
 
 
 public class GameManager : MonoBehaviour
@@ -14,8 +15,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] DishRecipe_ScriptableObject[] Dishes;
 
-
-
+    public TMP_Text TextComponent;
     private GameObject current_plate;
     private int plate_index = 0;
     
@@ -45,6 +45,14 @@ public class GameManager : MonoBehaviour
         if (plate_index < Dishes.Length)
         {
             DishRecipe_ScriptableObject recipe = Dishes[plate_index];
+
+            TextComponent.text = "Recipe: \n";
+
+            foreach (Ingredient ing in recipe.GetIngredients())
+            {
+                TextComponent.text += ing.ToString() + "\n";
+            }
+
             current_plate = Instantiate(PlatePrefab);
             current_plate.transform.position = transform.position;
             current_plate.GetComponent<PlateController>().init(recipe.recipe);

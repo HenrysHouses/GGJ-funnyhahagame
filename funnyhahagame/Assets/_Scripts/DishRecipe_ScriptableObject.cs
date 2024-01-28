@@ -60,13 +60,13 @@ public struct Ingredient
 
     public override string ToString()
     {
-        string stdout = "Ingredient Details: ";
+        string stdout = "• ";
 
-        stdout += Type + ", ";
+        stdout += Type + ", cuts: ";
 
-        stdout += timesCut + ", ";
+        stdout += timesCut + ", smashed:";
 
-        stdout += timesSmashed + ", ";
+        stdout += timesSmashed + ", burned: ";
 
         stdout += burnProgress + ". ";
 
