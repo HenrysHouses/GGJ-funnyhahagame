@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
         if (current_plate && current_plate.GetComponent<PlateController>().handed_in)
         {
             plate_index++;
+            if (plate_index >= Dishes.Length)
+            {
+                SceneManager.LoadScene("menuscene");
+            }
             instantiatePlate();
         }
     }
@@ -64,6 +68,7 @@ public class GameManager : MonoBehaviour
             current_plate.GetComponent<PlateController>().init(recipe.recipe);
 
             current_ingredientBox = Instantiate(JackBoxPrefab, transform.position, Quaternion.identity);
+            Debug.Log("Ingredient box" + current_ingredientBox);
             current_ingredientBox.GetComponentInChildren<JackBoxController>().recipe = recipe.recipe;
         
         }

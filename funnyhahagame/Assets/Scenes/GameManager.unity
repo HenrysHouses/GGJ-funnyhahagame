@@ -364,7 +364,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a08b527d89895e4da0f453122cbc98b, type: 2}
   - {fileID: 11400000, guid: 6c0e08cae257cde4f9adcee008612a1d, type: 2}
   - {fileID: 11400000, guid: 9a6caacad293fac4c894f02cffdbf61d, type: 2}
+  - {fileID: 11400000, guid: 175de0c6c379575419ef9a4485f42c8f, type: 2}
   TextComponent: {fileID: 82325693}
+  current_plate: {fileID: 0}
+  current_ingredientBox: {fileID: 0}
 --- !u!1 &457086101
 GameObject:
   m_ObjectHideFlags: 0
