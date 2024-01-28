@@ -12,6 +12,7 @@ public class InteractableObjects : MonoBehaviour
     public virtual void OnPickup(PlayerController playerCon)
     {
         player = playerCon;
+ 
        
     }
 

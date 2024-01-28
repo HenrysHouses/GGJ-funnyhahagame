@@ -10,8 +10,9 @@ public class BlowTorch : InteractableObjects
     [SerializeField] float burnStrength = 6;
     public bool BurnTheburger;
     public Transform pegboardPos;
-    public bool resetPos;
+    public bool resetPos,played;
     float timer;
+    public AudioSource burningThePlace;
 
 
 
@@ -51,6 +52,11 @@ public class BlowTorch : InteractableObjects
 
     public override void OnPickup(PlayerController playerCon)
     {
+        if (!played)
+        {
+            burningThePlace.Play();
+            played = true;
+        }
         GetComponent<AudioSource>().Play();
         GetComponentInChildren<ParticleSystem>().Play();
 

@@ -50,13 +50,15 @@ public class Lightswitch : InteractableObjects
             {
                 if (!played3)
                 {
-                    NarraterAudio1.Play();
+                    NarraterAudio3.Play();
                     played3 = true;
 
                 }
 
                 TurnOnLights();
                 GetComponent<AudioSource>().Play();
+                gameObject.SetActive(false);
+
 
 
             }
@@ -71,6 +73,8 @@ public class Lightswitch : InteractableObjects
 
         GetComponent<AudioSource>().Play();
         NarraterAudio0.Play();
+        gameObject.SetActive(false);
+
     }
 
 
@@ -85,6 +89,8 @@ public class Lightswitch : InteractableObjects
                 lightsOn = true;
             else
                 lightsOn = false;
+
+
         }
     }
 

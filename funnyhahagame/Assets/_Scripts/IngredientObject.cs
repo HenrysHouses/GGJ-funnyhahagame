@@ -8,6 +8,9 @@ public class IngredientObject : InteractableObjects
     private Rigidbody _rigidbody;
     private Collider _collider;
 
+    bool played;
+     public AudioSource playWhenGrabbed;
+
     internal virtual void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -27,5 +30,20 @@ public class IngredientObject : InteractableObjects
             player.loseObject();
             return;
         }
+
+        
     }
+
+
+    public override void OnPickup(PlayerController playerCon)
+    {
+        base.OnPickup(playerCon);
+        if (!played)
+        {
+            playWhenGrabbed.Play();
+            played = false;
+
+        }
+    }
+
 }

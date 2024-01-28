@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject current_plate;
     public GameObject current_ingredientBox;
     private int plate_index = 0;
+
     
 
     // Start is called before the first frame update
@@ -34,6 +35,10 @@ public class GameManager : MonoBehaviour
             instantiatePlate();
         }
     }
+
+
+
+
 
     public void instantiatePlate()
     {
@@ -61,5 +66,8 @@ public class GameManager : MonoBehaviour
         
         }
             
+        
+
+
     }
 }
