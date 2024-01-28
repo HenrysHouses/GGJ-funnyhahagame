@@ -21,7 +21,7 @@ public class IngredientObject : InteractableObjects
 
         if(other.collider.TryGetComponent(out PlateController plate))
         {
-            plate.addToPlate(transform);
+            plate.addToPlate(this);
             _rigidbody.isKinematic = true;
             _collider.enabled = false;
             player.loseObject();

@@ -13,4 +13,9 @@ MonoBehaviour:
   m_Name: kaas
   m_EditorClassIdentifier: 
   <recipe>k__BackingField:
-    Ingredients: []
+    Ingredients:
+    - Type: 0
+      Amount: 0
+      timesCut: 0
+      timesSmashed: 0
+      timesBurnt: 0

@@ -6,14 +6,62 @@ public class PlateController : InteractableObjects
 {
     private Recipe DesiredDish; 
     private Recipe platedDish;
+    private bool completed;
 
     public void init(Recipe _Recipe)
     {
         DesiredDish = _Recipe;
+        platedDish = new Recipe();
     }
 
-    public void addToPlate(Transform target)
+    public void UpdateCompletion()
     {
-        target.SetParent(transform);
+        // Check plate state
+        if (DesiredDish.Ingredients.Count == platedDish.Ingredients.Count)
+        {
+            if (CompareTwoRecipes(DesiredDish, platedDish))
+            {
+                completed = true;
+                Debug.Log("Completed the dish!");
+            }
+            
+        }
+
+        if (platedDish != null)
+            Debug.Log("Dish state: " + platedDish.ToString());
     }
+
+    public bool CompareTwoRecipes(Recipe a, Recipe b)
+    {
+        int b_contains_a = 0;
+        foreach (Ingredient ing in a.Ingredients)
+        {
+            if (b.Ingredients.Contains(ing))
+            {
+                b_contains_a++;
+            }
+        }
+
+        int a_contains_b = 0;
+        foreach (Ingredient ing in a.Ingredients)
+        {
+            if (b.Ingredients.Contains(ing))
+            {
+                a_contains_b++;
+            }
+        }
+
+        return a_contains_b == b_contains_a;
+    }
+
+    public void addToPlate(IngredientObject target)
+    {
+        target.transform.SetParent(transform);
+
+        platedDish.Ingredients.Add(target.ingredient);
+
+        UpdateCompletion();
+    }
+
+
 }

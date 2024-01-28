@@ -49,7 +49,6 @@ public class FishFlop : IngredientObject
     internal override void OnCollisionEnter(Collision collision)
     {
         base.OnCollisionEnter(collision);
-
         canfloop = true;
         floppingtimer = 0;
     }

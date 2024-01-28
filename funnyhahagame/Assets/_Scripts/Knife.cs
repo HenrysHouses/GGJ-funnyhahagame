@@ -31,7 +31,7 @@ public class Knife : InteractableObjects
 
     public void Cut(IngredientObject target)
     {
-        if (target.timeCut > 3)
+        if (target.ingredient.timesCut > 3)
         {
             //Change game objct to shrimp not desroy if time lel
             Destroy(target.gameObject);
@@ -45,10 +45,13 @@ public class Knife : InteractableObjects
             gameObject.GetComponent<AudioSource>().Play();
             GameObject instance0 = Instantiate(target.gameObject, target.transform.position, Quaternion.identity);
             instance0.transform.localScale = new Vector3(target.transform.localScale.x * 0.5f, target.transform.localScale.y * 0.5f, target.transform.localScale.z * 0.5f);
-            instance0.GetComponent<IngredientObject>().timeCut = target.timeCut +1;
+            instance0.GetComponent<IngredientObject>().ingredient = target.ingredient;
+            instance0.GetComponent<IngredientObject>().ingredient.timesCut++;
+
             GameObject instance1 = Instantiate(target.gameObject, target.transform.position, Quaternion.identity);
             instance1.transform.localScale = new Vector3(target.transform.localScale.x * 0.5f, target.transform.localScale.y * 0.5f, target.transform.localScale.z * 0.5f);
-            instance1.GetComponent<IngredientObject>().timeCut = target.timeCut + 1;
+            instance1.GetComponent<IngredientObject>().ingredient = target.ingredient;
+            instance1.GetComponent<IngredientObject>().ingredient.timesCut++;
 
             Destroy(target.gameObject);
             hasCut = true;

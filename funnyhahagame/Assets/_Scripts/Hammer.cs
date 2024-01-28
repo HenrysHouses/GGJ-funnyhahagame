@@ -29,23 +29,18 @@ public class Hammer : InteractableObjects
         transform.rotation = new Quaternion(0.517273605f,-0.478444576f,-0.54497844f,-0.454441905f);
     }
 
-    public void Smash(InteractableObjects target)
+    public void Smash(IngredientObject target)
     {
         if (!hasBeenBeat && (target.Layers & (1 << 7)) != 0)
         {
             
-                Destroy(Instantiate(SpashVFX, target.transform.position, Quaternion.identity), 3);
-                gameObject.GetComponent<AudioSource>().Play();
-                target.transform.localScale = new Vector3(target.transform.localScale.x * 1.4f, target.transform.localScale.y * 0.6f, target.transform.localScale.z * 1.4f);
-                hasBeenBeat = true;
-                //Debug.Log("Smash!!");
+            Destroy(Instantiate(SpashVFX, target.transform.position, Quaternion.identity), 3);
+            gameObject.GetComponent<AudioSource>().Play();
+            target.transform.localScale = new Vector3(target.transform.localScale.x * 1.4f, target.transform.localScale.y * 0.6f, target.transform.localScale.z * 1.4f);
+            hasBeenBeat = true;
+            //Debug.Log("Smash!!");
 
-                IngredientObject _ingredientObject = target as IngredientObject;
-
-            if(_ingredientObject != null)
-            {
-                _ingredientObject.ingredient.timesSmashed++;
-            }
+            target.ingredient.timesSmashed++;
 
         }
 
@@ -54,9 +49,9 @@ public class Hammer : InteractableObjects
     private void OnCollisionEnter(Collision collision)
     {
         if (player == null)
-            return;
+            return;    
         
-        InteractableObjects interactionObject = collision.gameObject.GetComponent<InteractableObjects>();
+        IngredientObject interactionObject = collision.gameObject.GetComponent<IngredientObject>();
         if (interactionObject)
         {
             if (player.HandTarget.velocity.magnitude > 1)
