@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] DishRecipe_ScriptableObject[] Dishes;
 
     public TMP_Text TextComponent;
-    private GameObject current_plate;
+    public GameObject current_plate;
+    public GameObject current_ingredientBox;
     private int plate_index = 0;
     
 
@@ -55,8 +56,8 @@ public class GameManager : MonoBehaviour
             current_plate.transform.position = transform.position - new Vector3(0, 0, 2);
             current_plate.GetComponent<PlateController>().init(recipe.recipe);
 
-            GameObject ingredientBox = Instantiate(JackBoxPrefab, transform.position, Quaternion.identity);
-            ingredientBox.GetComponentInChildren<JackBoxController>().recipe = recipe.recipe;
+            current_ingredientBox = Instantiate(JackBoxPrefab, transform.position, Quaternion.identity);
+            current_ingredientBox.GetComponentInChildren<JackBoxController>().recipe = recipe.recipe;
         
         }
             
