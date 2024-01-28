@@ -28,7 +28,7 @@ public class Lightswitch : InteractableObjects
             lighttimer += Time.deltaTime;
             if(lighttimer > 17)
             {
-                if(!NarraterAudio1.isPlaying && !played1)
+                if(!played1)
                 {
                     NarraterAudio1.Play();
                     played1 = true;
@@ -36,9 +36,9 @@ public class Lightswitch : InteractableObjects
                 }
             }
 
-            else if (lighttimer > 30)
+             if (lighttimer > 30)
             {
-                if (!NarraterAudio2.isPlaying && !played2)
+                if (!played2)
                 {
                     NarraterAudio2.Play();
                     played2 = true;
@@ -46,9 +46,9 @@ public class Lightswitch : InteractableObjects
                 }
             }
 
-            else if (lighttimer > 47)
+             if (lighttimer > 60)
             {
-                if (!NarraterAudio3.isPlaying && !played3)
+                if (!played3)
                 {
                     NarraterAudio1.Play();
                     played3 = true;
