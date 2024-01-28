@@ -9,6 +9,10 @@ public class PlateController : InteractableObjects
     public bool completed;
     public bool handed_in;
 
+    public Mesh bagMesh;
+    public Material bagMaterial;
+
+
     public void init(Recipe _Recipe)
     {
         DesiredDish = _Recipe;
@@ -26,6 +30,17 @@ public class PlateController : InteractableObjects
             if (CompareTwoRecipes(DesiredDish, platedDish))
             {
                 completed = true;
+
+                gameObject.GetComponent<MeshFilter>().mesh = bagMesh;
+                gameObject.GetComponent<MeshRenderer>().material = bagMaterial;
+
+                foreach (Transform child in transform)
+                {
+                    Destroy(child.gameObject);
+                }
+
+                gameObject.transform.localScale = new Vector3(35, 20, 35);
+
                 Debug.Log("Completed the dish!");
             }
             

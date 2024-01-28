@@ -134,3 +134,6 @@ MonoBehaviour:
     m_Bits: 0
   completed: 0
   handed_in: 0
+  bagMesh: {fileID: 4493585093827132993, guid: 125d0856108b15c47ad32e17ee63395d, type: 3}
+  bagMaterial: {fileID: 3516887107214377460, guid: 125d0856108b15c47ad32e17ee63395d,
+    type: 3}
