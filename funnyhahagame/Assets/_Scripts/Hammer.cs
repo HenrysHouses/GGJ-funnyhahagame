@@ -10,6 +10,7 @@ public class Hammer : InteractableObjects
     public GameObject SpashVFX;
     public Transform pegboardPos;
     public bool resetPos;
+    private float timer;
     // Update is called once per frame
 
 
@@ -41,12 +42,13 @@ public class Hammer : InteractableObjects
 
         if (resetPos == true)
         {
-            float timer =+ Time.deltaTime;
+            timer += Time.deltaTime;
             if(timer > 10)
             {
                 GetComponent<Rigidbody>().isKinematic = true;
                 gameObject.transform.position = pegboardPos.position;
-
+                transform.rotation = pegboardPos.rotation;
+                resetPos = false;
                 timer = 0;
             }
         }

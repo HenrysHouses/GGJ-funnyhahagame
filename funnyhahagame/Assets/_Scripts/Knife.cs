@@ -49,7 +49,7 @@ public class Knife : InteractableObjects
 
         if (resetPos == true)
         {
-            timer = +Time.deltaTime;
+            timer += Time.deltaTime;
             Debug.Log(timer);
             if (timer > 10)
             {
@@ -58,8 +58,7 @@ public class Knife : InteractableObjects
                 GetComponent<Rigidbody>().isKinematic = true;
                 gameObject.transform.position = pegboardPos.position;
                 transform.rotation = pegboardPos.rotation;
-
-
+                resetPos = false;
                 timer = 0;
             }
         }
@@ -69,6 +68,7 @@ public class Knife : InteractableObjects
     {
         base.OnPickup(playerCon);
         transform.rotation = new Quaternion(0.0813010931f,0.0425013602f,-0.990172446f,0.105557606f);
+        resetPos = false;
     }
 
 
