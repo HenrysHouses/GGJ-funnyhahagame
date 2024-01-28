@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -356,6 +356,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlatePrefab: {fileID: 4532730688430116300, guid: 659458fb643af0d40bbf70054aeb8661,
+    type: 3}
+  JackBoxPrefab: {fileID: 8009359073552220255, guid: 878bd3c9df772d14d854f70f29ee3a4a,
     type: 3}
   Dishes:
   - {fileID: 11400000, guid: d9d64aa3cde5bbe4ea398ef2e68aaa6f, type: 2}

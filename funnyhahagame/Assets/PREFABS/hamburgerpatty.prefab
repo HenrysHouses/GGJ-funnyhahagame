@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7332230154850945319}
   - component: {fileID: 4766399621169462765}
   - component: {fileID: 7346056602052640565}
-  - component: {fileID: 7375204307408729916}
+  - component: {fileID: -4165640649208921178}
   m_Layer: 0
   m_Name: hamburgerpatty
   m_TagString: Grabbable
@@ -99,7 +99,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2287483877431797496, guid: 041242a458aeafa4d8a26614c549d819, type: 3}
---- !u!114 &7375204307408729916
+--- !u!114 &-4165640649208921178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,13 +108,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6423640789048564792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5202c8773edd4464cb1526797ea5d27a, type: 3}
+  m_Script: {fileID: 11500000, guid: 464248521cf332843991438265f7097b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeCut: 0
-  timeSmashed: 0
-  burnedTimer: 0
   player: {fileID: 0}
+  isPickupp: 1
   <Layers>k__BackingField:
     serializedVersion: 2
-    m_Bits: 129
+    m_Bits: 193
+  ingredient:
+    Type: 3
+    timesCut: 0
+    timesSmashed: 0
+    burnProgress: 0

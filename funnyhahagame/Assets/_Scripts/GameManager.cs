@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
     // [SerializeField] Transform PlateDispenser;
     [SerializeField] GameObject PlatePrefab;
     [SerializeField] GameObject JackBoxPrefab;
-    [SerializeField] Transform SpawnPos; 
-    
     [SerializeField] DishRecipe_ScriptableObject[] Dishes;
 
     public TMP_Text TextComponent;
@@ -57,7 +55,7 @@ public class GameManager : MonoBehaviour
             current_plate.transform.position = transform.position;
             current_plate.GetComponent<PlateController>().init(recipe.recipe);
 
-            GameObject ingredientBox = Instantiate(JackBoxPrefab, SpawnPos.position, Quaternion.identity);
+            GameObject ingredientBox = Instantiate(JackBoxPrefab, transform.position, Quaternion.identity);
             ingredientBox.GetComponentInChildren<JackBoxController>().recipe = recipe.recipe;
         
         }
