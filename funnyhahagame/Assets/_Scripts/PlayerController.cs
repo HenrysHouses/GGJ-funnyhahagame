@@ -167,17 +167,9 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.DrawLine(HandBone.position, grabbed_object.transform.position, Color.magenta, 0.2f);
 
-                grabbed_object.transform.position = HandBone.position;
-                Transform child = grabbed_object.transform.Find("GrabPos");
-                if (child)
-                {
-                    grabbed_object.transform.position = HandBone.position + (grabbed_object.transform.position - child.position);
-                    grabbed_object.transform.rotation = child.rotation;
-                }
-
-                // If the child exists, return its position
-                
                 grabbed_object.transform.SetParent(HandBone);
+                grabbed_object.transform.position = HandBone.position;
+                grabbed_object.transform.rotation = HandBone.rotation;
                 grabbed_object.GetComponent<Rigidbody>().isKinematic = true;
                 grabbed_object.layer = 2;
                 grabbed_object.GetComponent<InteractableObjects>().OnPickup(this);
@@ -191,7 +183,9 @@ public class PlayerController : MonoBehaviour
             {
                 grabbed_object.transform.parent = null;
                 grabbed_object.GetComponent<Rigidbody>().isKinematic = false;
+                grabbed_object.GetComponent<Rigidbody>().velocity = HandTarget.velocity;
                 grabbed_object.layer = 0;
+
             }
             grabbed_object.GetComponent<InteractableObjects>().OnRelease();
             grabbed_object = null;

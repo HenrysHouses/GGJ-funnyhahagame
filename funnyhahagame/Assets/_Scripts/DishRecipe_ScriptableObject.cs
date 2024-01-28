@@ -34,4 +34,3 @@ public class DishRecipe_ScriptableObject : ScriptableObject
     [field:SerializeField] public Recipe recipe {get; private set;}
     public List<Ingredient> GetIngredients() => recipe.Ingredients;
 }
-
